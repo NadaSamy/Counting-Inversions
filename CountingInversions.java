@@ -69,12 +69,11 @@ public class CountingInversions {
     }
 
 
-    public int mergeAndCount(Integer arr[], int l, int r)
+    public long mergeAndCount(Integer arr[], int l, int r)
     {
-        int count = 0;
+        long count = 0;
         if (l < r)
         {
-            //int mid = l + (r - l) / 2;
             int mid = l + (r-l) / 2;
             count += mergeAndCount(arr, l, mid);
             count += mergeAndCount(arr, mid +1, r);
@@ -87,17 +86,12 @@ public class CountingInversions {
         
         CountingInversions obj = new CountingInversions();
         /*Read array from file */
-        Integer[] nums = obj.readLines("test.txt");
+        Integer[] nums = obj.readLines("IntegerArray.txt");
 
         /*Initialize sizes*/
         int size = nums.length;
         int left = 0, right = size-1;
-        int inversions = obj.mergeAndCount(nums, left, right);
-        /*for(int i = 0; i < size; i++)
-        {
-            System.out.print(nums[i]);
-        }*/
-        //System.out.println("");
+        long inversions = obj.mergeAndCount(nums, left, right);
         System.out.println(inversions);
     }
 }
